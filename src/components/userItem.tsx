@@ -8,8 +8,8 @@ interface IUserItemProps {
 const UserItem: FC<IUserItemProps> = ({ user }) => {
   return (
     <div style={{ padding: 15, border: '1px solid black' }} key={user.id}>
-      {user.id}. {user.name} проживает в городе {user.adress.city} на улице{' '}
-      {user.adress.street}
+      {user.id}. {user?.name} проживает в городе {user?.adress?.city} на улице
+      {user?.adress?.street}
     </div>
   );
 };
