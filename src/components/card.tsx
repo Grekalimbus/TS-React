@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 
 export enum CardVariant {
   outlined = 'outlined',
@@ -10,11 +10,14 @@ interface ICardProps {
   height?: string;
   variant: CardVariant;
   children?: React.ReactNode;
+  changeNumber: (num: number) => void | undefined;
 }
 
-const Card: FC<ICardProps> = ({ width, height, variant }) => {
+const Card: FC<ICardProps> = ({ width, height, variant, changeNumber }) => {
+  const [state, setState] = useState(0);
   return (
     <div
+      onClick={() => changeNumber(state)}
       style={{
         width,
         height,
