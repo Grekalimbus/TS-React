@@ -17,7 +17,6 @@ function App() {
         'https://jsonplaceholder.typicode.com/users'
       );
       setUsers(response.data);
-      console.log(response.data);
     } catch (e) {
       console.log(e);
     }
