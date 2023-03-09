@@ -6,6 +6,7 @@ import List from './components/list';
 import UserItem from './components/userItem';
 import TodosItem from './components/todosItem';
 import { ITodo, IUser } from './types/types';
+import EventsExamle from './components/eventsExample';
 
 function App() {
   const [users, setUsers] = useState<IUser[]>([]);
@@ -41,6 +42,7 @@ function App() {
   }
   return (
     <div>
+      <EventsExamle />
       <Card
         changeNumber={changeNumber}
         variant={CardVariant.primary}
