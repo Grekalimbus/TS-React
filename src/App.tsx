@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Card from './components/card';
 import { CardVariant } from './components/card';
+import List from './components/list';
+import UserItem from './components/userItem';
 import UserList from './components/userList';
 import { IUser } from './types/types';
 
@@ -33,7 +35,10 @@ function App() {
         width={'200px'}
         height={'200px'}
       />
-      <UserList users={users} />
+      <List
+        items={users}
+        renderItem={(user: IUser) => <UserItem user={user} key={user.id} />}
+      />
     </div>
   );
 }
