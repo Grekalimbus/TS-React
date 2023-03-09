@@ -1,28 +1,45 @@
-import axios from 'axios';
-import React, { useState, useEffect } from 'react';
-import Card from './components/card';
-import { CardVariant } from './components/card';
-import EventsExamle from './components/eventsExample';
-import { BrowserRouter, Route } from 'react-router-dom';
+import React from 'react';
+
+import { BrowserRouter, NavLink, Route } from 'react-router-dom';
 import UserPage from './components/UserPage/UserPage';
 import TodosPage from './components/TodosPage/TodosPage';
+import User from './components/OneUser/User';
+
+class Style {
+  constructor(
+    public margin: number,
+    public border: string,
+    public padding: number,
+    public background: string,
+    public color: string
+  ) {}
+}
+
+const style = new Style(15, '1px solid #000', 5, '#000', 'white');
 
 function App() {
-  function changeNumber(num: number): void {
-    console.log(0);
-  }
   return (
-    <div>
-      <EventsExamle />
-      <Card
-        changeNumber={changeNumber}
-        variant={CardVariant.primary}
-        width={'200px'}
-        height={'200px'}
-      />
-      <UserPage />
-      <TodosPage />
-    </div>
+    <BrowserRouter>
+      <div>
+        <Route path={'/'} exact>
+          <NavLink to={'/users'} style={style}>
+            Users
+          </NavLink>
+          <NavLink to={'/todos'} style={style}>
+            Todos
+          </NavLink>
+        </Route>
+        <Route path={'/users'} exact>
+          <UserPage />
+        </Route>
+        <Route path={'/users/:id'}>
+          <User />
+        </Route>
+        <Route path={'/todos'} exact>
+          <TodosPage />
+        </Route>
+      </div>
+    </BrowserRouter>
   );
 }
 
